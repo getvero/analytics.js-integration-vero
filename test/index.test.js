@@ -72,9 +72,9 @@ describe('Vero', function() {
         analytics.stub(window._veroq, 'push');
       });
 
-      it('should push "trackPageview"', function() {
+      it('should push "viewed_page"', function() {
         analytics.page();
-        analytics.called(window._veroq.push, ['trackPageview']);
+        analytics.called(window._veroq.push, ['track', 'viewed_page', {}, { source: 'segment' }]);
       });
     });
 
