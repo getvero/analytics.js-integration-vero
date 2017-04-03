@@ -73,8 +73,14 @@ describe('Vero', function() {
       });
 
       it('should push "viewed_page"', function() {
-        analytics.page();
-        analytics.called(window._veroq.push, ['track', 'viewed_page', {}, { source: 'segment' }]);
+        analytics.page({ referrer: 'http://localhost:9876/?id=42' });
+        analytics.called(window._veroq.push, ['track', 'viewed_page', {
+          referrer: 'http://localhost:9876/?id=42',
+          path: '/context.html',
+          search: '',
+          title: '',
+          url: 'http://localhost:9876/context.html'
+        },{ source: 'segment' }]);
       });
     });
 
